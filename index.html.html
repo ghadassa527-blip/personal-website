@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hadassa Gomes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F4FB;
+    --panel: #FFFFFF;
+    --lavender: #C9B9EA;
+    --sage: #B7DCCF;
+    --blush: #F2C7D2;
+    --ink: #2E2140;
+    --ink-soft: #5A4C72;
+    --line: #E4DCF3;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  h1, h2, h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  a{ color: inherit; }
+
+  :focus-visible{
+    outline: 3px solid var(--lavender);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(247,244,251,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .nav-mark{
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-links{
+    display: flex;
+    gap: 26px;
+    list-style: none;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .nav-links a{
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    padding-bottom: 2px;
+  }
+  .nav-links a:hover{
+    color: var(--ink);
+    border-color: var(--lavender);
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding: 96px 0 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow .dot{
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sage);
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    max-width: 11ch;
+  }
+  .hero h1 .accent{
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .hero p.lede{
+    margin-top: 22px;
+    max-width: 46ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+  }
+  .hero-cta{
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: #FBF8FF;
+  }
+  .btn-primary:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(46,33,64,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .btn-secondary:hover{
+    border-color: var(--lavender);
+    transform: translateY(-2px);
+  }
+
+  .hero-blob{
+    position: absolute;
+    top: -120px;
+    right: -140px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--blush), var(--lavender) 60%, transparent 75%);
+    opacity: 0.55;
+    filter: blur(6px);
+    z-index: -1;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+  }
+  .eyebrow-label{
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  section h2{
+    font-size: clamp(1.6rem, 3.4vw, 2.1rem);
+    margin-bottom: 22px;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .about p{
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+  .about p + p{ margin-top: 14px; }
+
+  /* ---------- Focus cards ---------- */
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px -18px rgba(46,33,64,0.35);
+  }
+  .card .swatch{
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    margin-bottom: 14px;
+  }
+  .card h3{
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .card p{
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .card:nth-child(1) .swatch{ background: var(--lavender); }
+  .card:nth-child(2) .swatch{ background: var(--sage); }
+  .card:nth-child(3) .swatch{ background: var(--blush); }
+  .card:nth-child(4) .swatch{ background: linear-gradient(135deg, var(--lavender), var(--blush)); }
+
+  /* ---------- Path / timeline ---------- */
+  .path{
+    position: relative;
+    margin-top: 12px;
+    padding-left: 34px;
+  }
+  .path::before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--lavender) 0 6px, transparent 6px 12px);
+  }
+  .path-step{
+    position: relative;
+    padding-bottom: 34px;
+  }
+  .path-step:last-child{ padding-bottom: 0; }
+  .path-step::before{
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 2px solid var(--lavender);
+  }
+  .path-step.is-goal::before{
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .path-step .tag{
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .path-step h3{
+    font-size: 1.08rem;
+    margin-bottom: 4px;
+  }
+  .path-step p{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 52ch;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-panel{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 40px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .contact-panel h2{ margin-bottom: 8px; }
+  .contact-panel p{ color: var(--ink-soft); max-width: 40ch; }
+  .contact-links{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  footer{
+    padding: 32px 0 48px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 560px){
+    .nav-links{ gap: 16px; font-size: 0.85rem; }
+    header.hero{ padding: 72px 0 60px; }
+    .contact-panel{ padding: 30px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-mark">Hadassa Gomes</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#path">Path</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-blob" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="hero-eyebrow"><span class="dot"></span>Business Administration Student</span>
+    <h1>Building the systems<br>behind good <span class="accent">ideas.</span></h1>
+    <p class="lede">I'm Hadassa Gomes — studying Business Administration and working toward a career running the operations side of a startup: the structure, strategy, and people-systems that let good ideas actually scale.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#path">See my path</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <div class="wrap about">
+    <div class="eyebrow-label">About</div>
+    <h2>A little about me</h2>
+    <div class="about-grid">
+      <p>I'm a Business Administration student with a growing interest in how early-stage companies actually run day to day — the operations, budgeting, and team structures that turn a good idea into a working business.</p>
+      <p>My long-term goal is to become a startup company administrator: the person who keeps a fast-moving team organized, on budget, and focused, so founders can focus on building. I'm using my coursework, projects, and every hands-on opportunity I can find to build toward that.</p>
+    </div>
+  </div>
+</section>
+
+<section id="focus" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow-label">Focus Areas</div>
+    <h2>What I'm building skills in</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="swatch"></div>
+        <h3>Operations</h3>
+        <p>Keeping projects, budgets, and workflows organized and moving.</p>
+      </div>
+      <div class="card">
+        <div class="swatch"></div>
+        <h3>Strategy</h3>
+        <p>Thinking through how a business plans, prioritizes, and grows.</p>
+      </div>
+      <div class="card">
+        <div class="swatch"></div>
+        <h3>Team Leadership</h3>
+        <p>Coordinating people and communication so teams work well together.</p>
+      </div>
+      <div class="card">
+        <div class="swatch"></div>
+        <h3>Financial Literacy</h3>
+        <p>Understanding budgets, forecasting, and the numbers behind decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="path" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow-label">My Path</div>
+    <h2>Where I'm headed</h2>
+    <div class="path">
+      <div class="path-step">
+        <div class="tag">Now</div>
+        <h3>Business Administration Studies</h3>
+        <p>Building a foundation in management, finance, and strategy through coursework and class projects.</p>
+      </div>
+      <div class="path-step">
+        <div class="tag">Next</div>
+        <h3>Hands-On Experience</h3>
+        <p>Seeking internships and project work with startups and small teams to learn operations in real settings.</p>
+      </div>
+      <div class="path-step is-goal">
+        <div class="tag">Goal</div>
+        <h3>Startup Company Administrator</h3>
+        <p>Running the operational backbone of an early-stage company — helping a great idea grow into a great business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <h2>Let's connect</h2>
+        <p>Open to internships, projects, and conversations about startups and operations.</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:hadassa.gomes@example.com">Email me</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Hadassa Gomes. Built with care.</div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
